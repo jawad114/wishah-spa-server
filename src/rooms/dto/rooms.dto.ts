@@ -9,5 +9,5 @@ export class CreateRoomDto {
   isThirdParty: boolean;
 
   @IsArray()
-  amenities: number[]; // IDs of the amenities
+  amenities: number[];
 }

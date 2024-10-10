@@ -1,4 +1,3 @@
-// src/services/services.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
 import { Amenities } from '../amenities/amenities.entity';
 
@@ -15,6 +14,9 @@ export class Services {
 
   @Column()
   requiredTherapist: string;
+
+  @Column({ default: 10 }) 
+  duration: number;
 
   @ManyToMany(() => Amenities, (amenity) => amenity.services, { cascade: true })
   @JoinTable()

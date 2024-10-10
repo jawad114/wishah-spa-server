@@ -1,8 +1,8 @@
-// src/users/entities/user.entity.ts
+
 
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('users') // This will create a 'users' table
+@Entity('users') 
 export class User {
   @PrimaryGeneratedColumn()
   id: number;

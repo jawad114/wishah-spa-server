@@ -13,5 +13,5 @@ export class CreateProductDto {
   price: number;
 
   @IsString()
-  imagePath: string; // We will handle this manually while uploading the image
+  imagePath: string;
 }

@@ -1,4 +1,4 @@
-// src/staff/staff.controller.ts
+
 import {
     Controller,
     Post,
@@ -17,6 +17,7 @@ import {
   import { extname } from 'path';
   import { UpdateStaffDto } from './dto/update.dto';
   import { Staff } from './staff.entity';
+  import { v4 as uuid } from 'uuid';
   @Controller('staff')
   export class StaffController {
     constructor(private readonly staffService: StaffService) {}
@@ -25,16 +26,17 @@ import {
     @UseInterceptors(
       FileInterceptor('image', {
         storage: diskStorage({
-          destination: './uploads', 
-          filename: (req, file, callback) => {
-            const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-            const ext = extname(file.originalname);
-            callback(null, `${file.fieldname}-${uniqueSuffix}${ext}`);
+          destination: './uploads',
+          filename: (req, file, cb) => {
+            const filename: string = `${uuid()}-${file.originalname}`;
+            cb(null, filename);
           },
         }),
       }),
     )
     async create(@UploadedFile() file: Express.Multer.File, @Body() createStaffDto: CreateStaffDto) {
+      console.log(file)
+      console.log(createStaffDto)
       createStaffDto.image = file.path; 
       return this.staffService.create(createStaffDto);
     }

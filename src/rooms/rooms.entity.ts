@@ -10,9 +10,9 @@ export class Room {
   name: string;
 
   @Column({ default: false })
-  isThirdParty: boolean; // Changed to boolean
+  isThirdParty: boolean; 
 
-  @ManyToMany(() => Amenities, (amenity) => amenity.rooms, { eager: true }) // Eager loading to automatically include amenities
+  @ManyToMany(() => Amenities, (amenity) => amenity.rooms, { cascade: true })
   @JoinTable()
   amenities: Amenities[];
 }

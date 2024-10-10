@@ -1,5 +1,5 @@
-// src/services/dto/create-service.dto.ts
-import { IsString, IsDecimal, IsOptional, IsArray, IsNumber } from 'class-validator';
+
+import { IsString, IsDecimal, IsOptional, IsArray, IsNumber, isNumber } from 'class-validator';
 
 export class CreateServiceDto {
   @IsString()
@@ -11,8 +11,11 @@ export class CreateServiceDto {
   @IsString()
   requiredTherapist: string;
 
+  @IsNumber()
+  duration: number;
+
   @IsOptional()
   @IsArray()
-  @IsNumber({}, { each: true }) // Accept an array of amenity IDs
-  amenities: number[]; // List of selected amenity IDs
+  @IsNumber({}, { each: true }) 
+  amenities: number[];
 }

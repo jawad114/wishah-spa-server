@@ -1,4 +1,4 @@
-// src/amenities/amenities.entity.ts
+
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
 import { Services } from '../services/services.entity';
 import {Room} from '../rooms/rooms.entity';

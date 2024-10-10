@@ -32,7 +32,7 @@ import {
       }),
     )
     create(@UploadedFile() file: Express.Multer.File, @Body() createProductDto: CreateProductDto) {
-      createProductDto.imagePath = file.path; // Set the path of the uploaded image
+      createProductDto.imagePath = file.path;
       return this.productsService.create(createProductDto);
     }
   

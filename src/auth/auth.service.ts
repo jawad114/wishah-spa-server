@@ -1,4 +1,3 @@
-// src/auth/auth.service.ts
 
 import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';

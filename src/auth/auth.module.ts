@@ -1,4 +1,4 @@
-// src/auth/auth.module.ts
+
 
 import { Module,forwardRef } from '@nestjs/common';
 import { AuthService } from './auth.service';
@@ -9,9 +9,9 @@ import { UsersModule } from './../user/user.module';
 
 @Module({
   imports: [
-   // Import the users module
+   
     JwtModule.register({
-      secret: 'your_jwt_secret', // Use an environment variable in a real app
+      secret: 'your_jwt_secret', 
       signOptions: { expiresIn: '1h' },
     }),
     forwardRef(() => UsersModule), 

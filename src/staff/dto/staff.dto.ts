@@ -1,9 +1,9 @@
-// src/staff/dto/create-staff.dto.ts
+
 import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString } from 'class-validator';
 
 export class CreateStaffDto {
   @IsNotEmpty()
-  image: string; // We will handle the image separately
+  image: string; 
 
   @IsNotEmpty()
   @IsString()

@@ -11,6 +11,7 @@ export class ServicesController {
 
   @Post('create')
   async create(@Body() createServiceDto: CreateServiceDto): Promise<Services> {
+    console.log(createServiceDto)
     return this.servicesService.createService(createServiceDto);
   }
 

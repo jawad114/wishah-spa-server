@@ -1,4 +1,4 @@
-// src/staff/staff.entity.ts
+
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -6,8 +6,8 @@ export class Staff {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  image: string; // Path to the uploaded image
+  @Column({default: ''})
+  image: string; 
 
   @Column()
   name: string;

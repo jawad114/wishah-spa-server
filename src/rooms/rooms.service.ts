@@ -19,12 +19,8 @@ export class RoomService {
     const room = new Room();
     room.name = createRoomDto.name;
     room.isThirdParty = createRoomDto.isThirdParty;
-
-    // Fetch amenities based on the IDs provided in the DTO
     const amenities = await this.amenityRepository.findByIds(createRoomDto.amenities);
     room.amenities = amenities;
-
-    // Save the new Room entity
     return this.roomRepository.save(room);
   }
 

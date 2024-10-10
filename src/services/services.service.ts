@@ -1,4 +1,4 @@
-// src/services/services.service.ts
+
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -17,28 +17,28 @@ export class ServicesService {
 
   async createService(createServiceDto: CreateServiceDto): Promise<Services> {
     const { serviceName, servicePrice, requiredTherapist, amenities } = createServiceDto;
+    console.log(amenities);
 
-    // Fetch the selected amenities based on IDs
     const amenitiesList = await this.amenitiesRepository.findByIds(amenities);
 
     const service = this.serviceRepository.create({
       serviceName,
       servicePrice,
       requiredTherapist,
-      amenities: amenitiesList, // Associate the amenities with the service
+      amenities: amenitiesList, 
     });
 
     return this.serviceRepository.save(service);
   }
 
   async findAllServices(): Promise<Services[]> {
-    return this.serviceRepository.find({ relations: ['amenities'] }); // Include amenities in the response
+    return this.serviceRepository.find({ relations: ['amenities'] }); 
   }
 
   async findServiceById(id: number): Promise<Services> {
     const service = await this.serviceRepository.findOne({
       where: { id },
-      relations: ['amenities'], // Include amenities in the response
+      relations: ['amenities'], 
     });
     if (!service) {
       throw new NotFoundException(`Service with ID ${id} not found`);
@@ -69,6 +69,6 @@ export class ServicesService {
   }
 
   async findAllAmenities(): Promise<Amenities[]> {
-    return this.amenitiesRepository.find(); // Fetch all amenities
+    return this.amenitiesRepository.find();
   }
 }

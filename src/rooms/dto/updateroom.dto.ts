@@ -11,5 +11,5 @@ export class UpdateRoomDto {
 
   @IsArray()
   @IsOptional()
-  amenities?: number[]; // IDs of the amenities
+  amenities?: number[]; 
 }

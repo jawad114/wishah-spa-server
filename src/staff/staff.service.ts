@@ -1,4 +1,4 @@
-// src/staff/staff.service.ts
+
 import { Injectable,NotFoundException, Put } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -21,8 +21,7 @@ export class StaffService {
     if (!staff) {
       throw new NotFoundException(`Staff member with ID ${id} not found`);
     }
-
-    // Update the staff properties
+  
     Object.assign(staff, updateStaffDto);
     return this.staffRepository.save(staff);
   }
@@ -31,7 +30,7 @@ export class StaffService {
     return this.staffRepository.save(staff);
   }
 
-  async findAll(): Promise<Staff[]> {
+  async findAll(): Promise<Staff[]> { 
     return this.staffRepository.find();
   }
 

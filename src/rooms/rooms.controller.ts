@@ -8,25 +8,24 @@ import { Room } from './rooms.entity';
 export class RoomsController {
   constructor(private readonly roomsService: RoomService) {}
 
-  // Create a new room
-  @Post()
+  @Post("create")
   async create(@Body() createRoomDto: CreateRoomDto): Promise<Room> {
+    console.log("****************:",createRoomDto)
     return this.roomsService.create(createRoomDto);
   }
 
-  // Retrieve all rooms
   @Get()
   async findAll(): Promise<Room[]> {
     return this.roomsService.findAll();
   }
 
-  // Retrieve a room by ID
+
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Room> {
-    return this.roomsService.findOne(+id); // convert id to number
+    return this.roomsService.findOne(+id);
   }
 
-  // Update a room by ID
+
   @Put(':id')
   async update(
     @Param('id') id: string,
@@ -35,7 +34,7 @@ export class RoomsController {
     return this.roomsService.update(+id, updateRoomDto);
   }
 
-  // Delete a room by ID
+
   @Delete(':id')
   async remove(@Param('id') id: string): Promise<void> {
     return this.roomsService.remove(+id);
