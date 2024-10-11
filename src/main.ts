@@ -5,11 +5,9 @@ import * as dotenv from 'dotenv';
 
 async function bootstrap() {
   dotenv.config();
-    console.log(process.env.DATABASE_USERNAME)
-  console.log(process.env.DATABASE_PORT)
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: process.env.CLIENT, 
+    origin: 'https://wishah-spa-git-main-jawad-shahs-projects.vercel.app/', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, 
   });
