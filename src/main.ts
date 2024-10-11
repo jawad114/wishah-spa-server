@@ -7,7 +7,7 @@ async function bootstrap() {
   dotenv.config();
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: 'https://wishah-spa.vercel.app/onBoarding', 
+    origin: 'https://wishah-spa.vercel.app/', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, 
   });
